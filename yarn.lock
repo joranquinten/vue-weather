@@ -1187,7 +1187,7 @@
   resolved "http://verdaccio.dev.cloud.jumbo.com/@vue%2fpreload-webpack-plugin/-/preload-webpack-plugin-1.1.0.tgz#d768dba004261c029b53a77c5ea2d5f9ee4f3cce"
   integrity sha512-rcn2KhSHESBFMPj5vc5X2pI9bcBNQQixvJXhD5gZ4rN2iym/uH2qfDSQfUS5+qwiz0a85TCkeUs6w6jxFDudbw==
 
-"@vue/test-utils@^1.0.0-beta.29":
+"@vue/test-utils@1.0.0-beta.29":
   version "1.0.0-beta.29"
   resolved "http://verdaccio.dev.cloud.jumbo.com/@vue%2ftest-utils/-/test-utils-1.0.0-beta.29.tgz#c942cf25e891cf081b6a03332b4ae1ef430726f0"
   integrity sha512-yX4sxEIHh4M9yAbLA/ikpEnGKMNBCnoX98xE1RwxfhQVcn0MaXNSj1Qmac+ZydTj6VBSEVukchBogXBTwc+9iA==
@@ -4307,6 +4307,11 @@ flatted@^2.0.0:
   resolved "http://verdaccio.dev.cloud.jumbo.com/flatted/-/flatted-2.0.0.tgz#55122b6536ea496b4b44893ee2608141d10d9916"
   integrity sha512-R+H8IZclI8AAkSBRQJLVOsxwAoHd6WC40b4QTNWIjzAa6BXOBfQcM587MXDTVPeYaopFNWHUFLx7eNmHDSxMWg==
 
+flush-promises@^1.0.2:
+  version "1.0.2"
+  resolved "http://verdaccio.dev.cloud.jumbo.com/flush-promises/-/flush-promises-1.0.2.tgz#4948fd58f15281fed79cbafc86293d5bb09b2ced"
+  integrity sha512-G0sYfLQERwKz4+4iOZYQEZVpOt9zQrlItIxQAAYAWpfby3gbHrx0osCHz5RLl/XoXevXk0xoN4hDFky/VV9TrA==
+
 flush-write-stream@^1.0.0:
   version "1.1.1"
   resolved "http://verdaccio.dev.cloud.jumbo.com/flush-write-stream/-/flush-write-stream-1.1.1.tgz#8dd7d873a1babc207d94ead0c2e0e44276ebf2e8"
@@ -5938,6 +5943,11 @@ jest-message-util@^24.7.1:
     micromatch "^3.1.10"
     slash "^2.0.0"
     stack-utils "^1.0.1"
+
+jest-mock-now@^1.2.1:
+  version "1.2.1"
+  resolved "http://verdaccio.dev.cloud.jumbo.com/jest-mock-now/-/jest-mock-now-1.2.1.tgz#b2e74c44486a6af786d1ee28e26143411ae18f1f"
+  integrity sha512-xCKSldhxBZ3mNglGh0AawL2A6U+udykpZk6mn6MZcSuXtxR1kMV52/US5/P0inICp8kzyvvyZGzaNqz5h8k95w==
 
 jest-mock@^23.2.0:
   version "23.2.0"

@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import Loading from '../../src/components/Loading'
+import Loading from '../../../src/components/Loading'
 
 describe('Loading.vue', () => {
   it('renders without crashing', () => {

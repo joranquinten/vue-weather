@@ -8,7 +8,7 @@
       <p>{{ day.summary }}</p>
       <p class="temperature-range">
         {{
-        `${day.temperatureLow} &deg;C &ndash; ${day.temperatureHigh} &deg;C`
+          `${day.temperatureLow} &deg;C &ndash; ${day.temperatureHigh} &deg;C`
         }}
       </p>
     </li>
@@ -29,16 +29,13 @@ export default {
   },
   filters: {
     capitalizeFirstLetter: function(value) {
-      if (!value) return ''
       value = value.toString()
       return value.charAt(0).toUpperCase() + value.slice(1)
     },
     weekDayFromTime(value) {
-      if (!value) return ''
       return format(new Date(value), 'dddd', { locale: nl })
     },
     monthDate(value) {
-      if (!value) return ''
       return format(new Date(value), 'D MMMM', { locale: nl })
     }
   }

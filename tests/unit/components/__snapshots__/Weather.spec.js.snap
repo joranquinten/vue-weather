@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Weather.vue renders without crashing 1`] = `
+<div class="weather">
+  Weather widget
+  <!---->
+  <!---->
+  <!---->
+</div>
+`;

@@ -118,7 +118,7 @@ export default {
     }
   },
   watch: {
-    $route(to, from) {
+    $route() {
       getWeatherForecast(this.location, this.$route.params.forecastType).then(
         weather => {
           this.weather = weather

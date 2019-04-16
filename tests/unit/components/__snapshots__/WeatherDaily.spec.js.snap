@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WeatherDaily.vue renders props.daily when passed 1`] = `
+<ol>
+  <li>
+    <h4>
+      Invalid Date
+      Invalid Date
+    </h4>
+    <p></p>
+    <p class="temperature-range">
+      undefined °C – undefined °C
+    </p>
+  </li>
+</ol>
+`;
+
+exports[`WeatherDaily.vue renders without crashing 1`] = `<ol></ol>`;
