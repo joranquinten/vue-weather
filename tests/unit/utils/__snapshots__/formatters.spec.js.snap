@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`weatherFormatter should return the daily format when 'daily' is provided 1`] = `
+Object {
+  "daily": Array [
+    Object {
+      "icon": "icon-day-one",
+      "summary": "Dag 1",
+      "temperatureHigh": 20.41,
+      "temperatureLow": 8.57,
+      "time": 1555365600000000,
+    },
+    Object {
+      "icon": "icon-day-two",
+      "summary": "Dag 2",
+      "temperatureHigh": 10.17,
+      "temperatureLow": -1.24,
+      "time": 1555452000000000,
+    },
+  ],
+  "icon": "partly-cloudy-day",
+  "latitude": 51.613358399999996,
+  "longitude": 5.5310954,
+  "summary": "Licht bewolkt",
+  "time": 1555403544000,
+}
+`;
+
+exports[`weatherFormatter should return the daily format when no type or 'current' is provided 1`] = `
+Object {
+  "icon": "partly-cloudy-day",
+  "latitude": 51.613358399999996,
+  "longitude": 5.5310954,
+  "summary": "Licht bewolkt",
+  "temperature": 12.91,
+  "time": 1555403544000,
+}
+`;
+
+exports[`weatherFormatter should return the daily format when no type or 'current' is provided 2`] = `
+Object {
+  "icon": "partly-cloudy-day",
+  "latitude": 51.613358399999996,
+  "longitude": 5.5310954,
+  "summary": "Licht bewolkt",
+  "temperature": 12.91,
+  "time": 1555403544000,
+}
+`;

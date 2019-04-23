@@ -27,75 +27,14 @@
 </template>
 
 <script>
-import axios from 'axios'
 import { distanceInWordsToNow } from 'date-fns'
 import nl from 'date-fns/locale/nl'
 
 import WeatherDaily from './WeatherDaily'
 import LocationPicker from './LocationPicker'
 
-let cache
-
-const getWeatherForecast = async (location, type) => {
-  const secret = process.env.VUE_APP_DARKSKY_API_KEY
-  const endpoint = `https://api.darksky.net/forecast/${secret}/REPLACE_WITH_LAT,REPLACE_WITH_LON?lang=nl&units=ca&exclude=minutely,hourly,alerts,flags`
-
-  const localForecast = endpoint
-    .replace('REPLACE_WITH_LAT', location.latitude)
-    .replace('REPLACE_WITH_LON', location.longitude)
-
-  // TODO: Should check whether exists in collection of cache (array filter)
-  if (
-    cache &&
-    (cache.latitude === location.latitude &&
-      cache.longitude === location.longitude)
-  ) {
-    // TODO: Check whether to invalidate cache
-    return weatherFormatter(cache, type)
-  }
-
-  return axios
-    .get(localForecast)
-    .then(response => {
-      // TODO: Should push to cache for location
-      cache = { ...response.data, location }
-      return weatherFormatter(response.data, type)
-    })
-    .catch(error => console.error(error))
-}
-
-const weatherFormatter = (weather, type) => {
-  if (!type) {
-    return {
-      summary: weather.currently.summary,
-      icon: weather.currently.icon,
-      latitude: weather.latitude,
-      longitude: weather.longitude,
-      temperature: weather.currently.temperature,
-      time: weather.currently.time * 1000
-    }
-  }
-
-  if (type === 'daily') {
-    return {
-      summary: weather.currently.summary,
-      icon: weather.currently.icon,
-      latitude: weather.latitude,
-      longitude: weather.longitude,
-      daily: weather.daily.data.reduce((report, day) => {
-        report.push({
-          summary: day.summary,
-          time: day.time * 1000,
-          temperatureHigh: day.temperatureHigh,
-          temperatureLow: day.temperatureLow,
-          icon: day.icon
-        })
-        return report
-      }, []),
-      time: weather.currently.time * 1000
-    }
-  }
-}
+import { getWeatherForecast } from '../utils/services'
+import { weatherFormatter } from '../utils/formatters'
 
 export default {
   name: 'Weather',
@@ -119,13 +58,16 @@ export default {
   },
   watch: {
     $route() {
-      getWeatherForecast(this.location, this.$route.params.forecastType).then(
-        weather => {
-          this.weather = weather
-          this.loading = false
-          return this
-        }
-      )
+      getWeatherForecast(this.location).then(weather => {
+        const formattedWeather = weatherFormatter(
+          weather,
+          this.$route.params.forecastType
+        )
+
+        this.weather = formattedWeather
+        this.loading = false
+        return this
+      })
     }
   },
   mounted() {
@@ -137,12 +79,15 @@ export default {
           longitude: position.coords.longitude
         }
 
-        getWeatherForecast(this.location, this.$route.params.forecastType).then(
-          weather => {
-            this.weather = weather
-            this.loading = false
-          }
-        )
+        getWeatherForecast(this.location).then(weather => {
+          const formattedWeather = weatherFormatter(
+            weather,
+            this.$route.params.forecastType
+          )
+
+          this.weather = formattedWeather
+          this.loading = false
+        })
       })
     } else {
       return (this.notAvailable = true)

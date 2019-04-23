@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for components/LocationPicker.vue</title>
+    <title>Code coverage report for utils/formatters.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -16,18 +16,18 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../index.html">All files</a> / <a href="index.html">components</a> LocationPicker.vue
+      <a href="../index.html">All files</a> / <a href="index.html">utils</a> formatters.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>2/2</span>
+        <span class='fraction'>9/9</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/0</span>
+        <span class='fraction'>8/8</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>2/2</span>
+        <span class='fraction'>8/8</span>
       </div>
     </div>
   </div>
@@ -74,7 +74,14 @@
 29
 30
 31
-32</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+32
+33
+34
+35
+36</td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -84,58 +91,63 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
-  &lt;div class="location-picker"&gt;
-    &lt;fieldset&gt;
-      &lt;legend&gt;For location&lt;/legend&gt;
-      &lt;label for="latitude"&gt;Latitude&lt;/label&gt;
-      &lt;input type="number" id="latitude" v-model="location.latitude" /&gt;
-      &lt;label for="longitude"&gt;Longitude&lt;/label&gt;
-      &lt;input type="number" id="longitude" v-model="location.longitude" /&gt;
-    &lt;/fieldset&gt;
-    &lt;button @click="updateAction"&gt;Get weather for this position&lt;/button&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
-&nbsp;
-&lt;script&gt;
-export default {
-  name: 'LocationPicker',
-  props: {
-    location: {
-      type: Object,
-      default: () =&gt; ({ latitude: null, longitude: null })
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const weatherFormatter = (weather, type) =&gt; {
+  if (!weather) return undefined
+  if (!type || type === 'current') {
+    return {
+      summary: weather.currently.summary,
+      icon: weather.currently.icon,
+      latitude: weather.latitude,
+      longitude: weather.longitude,
+      temperature: weather.currently.temperature,
+      time: weather.currently.time * 1000
     }
-  },
-  methods: {
-    updateAction: function() {
-      this.$emit('location-change', this.location)
+  }
+&nbsp;
+  if (type === 'daily') {
+    return {
+      summary: weather.currently.summary,
+      icon: weather.currently.icon,
+      latitude: weather.latitude,
+      longitude: weather.longitude,
+      daily: weather.daily.data.reduce((report, day) =&gt; {
+        report.push({
+          summary: day.summary,
+          time: day.time * 1000,
+          temperatureHigh: day.temperatureHigh,
+          temperatureLow: day.temperatureLow,
+          icon: day.icon
+        })
+        return report
+      }, []),
+      time: weather.currently.time * 1000
     }
   }
 }
-&lt;/script&gt;
 &nbsp;
-&lt;style scoped&gt;&lt;/style&gt;
+export { weatherFormatter }
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->

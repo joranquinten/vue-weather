@@ -20,7 +20,7 @@ module.exports = {
   ],
   testURL: 'http://localhost/',
   watchPlugins: [
-    '/Users/jquinten/Projects/wgwdv-app/node_modules/jest-watch-typeahead/filename.js',
-    '/Users/jquinten/Projects/wgwdv-app/node_modules/jest-watch-typeahead/testname.js'
+    '/Users/jquinten/Projects/vue-weather/node_modules/jest-watch-typeahead/filename.js',
+    '/Users/jquinten/Projects/vue-weather/node_modules/jest-watch-typeahead/testname.js'
   ]
 }
